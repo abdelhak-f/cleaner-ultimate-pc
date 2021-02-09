@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ULTIMATE PC CLEANER</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+     
+    <nav>
+    <div class="mynav">Analyse du pc nécessaire</div>
+    </nav>
+
+    <div class="nav-side-menu">
+      <div class="brand ">PC CLEANER</div>
+      <i class=" fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    
+          <div class="menu-list">
+    
+              <ul id="menu-content" class="menu-content collapse out">
+                  <li>
+                   
+                    <!-- <i class="fas fa-tachometer-alt fa-lg" ></i> -->
+                     <button onclick="deleteAllCookies()">Suppression</button> 
+                  
+                  </li>
+  
+                  <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                    <a href="#"><i class="fab fa-studiovinari fa-lg"></i> fichiers temporaires <span class="arrow"></span></a>
+                  </li>
+
+                  <li  data-toggle="collapse" data-target="#products" class="collapsed active" >
+                    <!-- <i class="fab fa-studiovinari fa-lg"></i> -->
+                     <button id="display" onclick="displayCookies()"> Les Cookies</button> <span class="arrow"></span>
+                  </li>
+               
+       </div>
+  </div>
+
+  <section>
+    <div class="body">
+    <div style="color: black;"> 
+      <script>
+        
+            function displayCookies(cookieStores) {
+  for (let store of cookieStores) {
+    console.log(`Cookie store: ${store.id}\n Tab IDs: ${store.tabIds}`);
+  }
+}
+
+var getting = browser.cookies.getAllCookieStores();
+getting.then(logStores);
+
+          /////////////////////////////////////
+            
+          function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
+deleteAllCookies();
+  
+            
+     </script>
+    </div>
+    <div></div>
+    <div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+     <p> PC-CLEANER est un lgiciel made in Youcode qui respecte votre vie privée. <br>C'est gratuit et ca le restera.</p>
+  </footer>
+   
+  </body>
+</html>
